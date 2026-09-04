@@ -241,6 +241,50 @@ h3 {
 .links a:hover { color: #ff8260; }
 .links a::after { content: " \2192"; }
 
+/* ---------- experience ---------- */
+
+.job {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.75rem;
+}
+
+.job-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+.job-head h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.job-head .year {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.job-list {
+  margin: 1.1rem 0 0;
+  padding-left: 1.25rem;
+  color: var(--soft);
+}
+
+.job-list li { margin-bottom: 0.6rem; max-width: 46rem; }
+.job-list li::marker { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .job { padding: 1.25rem; }
+}
+
 /* ---------- about ---------- */
 
 .about-cols {
