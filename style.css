@@ -281,6 +281,8 @@ h3 {
 .job-list li { margin-bottom: 0.6rem; max-width: 46rem; }
 .job-list li::marker { color: var(--accent); }
 
+.job + .job { margin-top: 1.25rem; }
+
 @media (max-width: 560px) {
   .job { padding: 1.25rem; }
 }
