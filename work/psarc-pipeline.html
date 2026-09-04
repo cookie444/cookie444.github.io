@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PSARC Pipeline — Brendan Koch</title>
+<meta name="description" content="Case study: a queue-driven download and packaging pipeline built with FastAPI, Redis, Postgres, and Docker.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23ff6a3d'/><text x='16' y='23' font-size='18' font-family='Arial' font-weight='700' text-anchor='middle' fill='%230b0b0d'>B</text></svg>">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">Brendan Koch</a>
+    <nav class="nav">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#notes">Notes</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="case-study">
+
+  <section class="hero">
+    <p class="eyebrow">Case study &mdash; 2026</p>
+    <h1>PSARC Pipeline</h1>
+    <p class="sub">A queue-driven pipeline that downloads, unpacks, and organizes a personal library of fan-made game add-on files from several different file hosts &mdash; triggered from a one-field form, fully containerized.</p>
+    <dl class="meta-strip">
+      <div><dt>Stack</dt><dd>FastAPI, Redis, Postgres, Docker, n8n</dd></div>
+      <div><dt>Role</dt><dd>Solo build, design to deployment</dd></div>
+      <div><dt>Source</dt><dd>Private &mdash; walkthrough on request</dd></div>
+    </dl>
+  </section>
+
+  <section class="cs-section">
+    <h2>The problem</h2>
+    <div class="prose">
+      <p>I maintain a library of add-on files scattered across three different file hosts, each with its own login, anti-bot quirks, and download flow. Fetching anything meant babysitting browser tabs, re-entering credentials, and renaming files by hand.</p>
+      <p>I wanted one input &mdash; a link or an ID &mdash; and everything else automated: authentication, queuing, download, filename handling, storage, and a record of what happened.</p>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>How it works</h2>
+    <div class="flow" role="img" aria-label="Architecture: webhook form to API, API writes to Postgres and pushes a job to Redis, workers pop jobs and write files to a shared volume, nginx fronts the API.">
+      <div class="flow-row">
+        <span class="node">One-field form<br><span class="node-sub">n8n webhook</span></span>
+        <span class="arrow">&rarr;</span>
+        <span class="node">API<br><span class="node-sub">FastAPI + nginx</span></span>
+        <span class="arrow">&rarr;</span>
+        <span class="node">Redis<br><span class="node-sub">job queue</span></span>
+        <span class="arrow">&rarr;</span>
+        <span class="node">Workers<br><span class="node-sub">async, scalable</span></span>
+        <span class="arrow">&rarr;</span>
+        <span class="node">Disk volume<br><span class="node-sub">organized output</span></span>
+      </div>
+      <p class="flow-note">Postgres tracks every job's status end to end.</p>
+    </div>
+    <div class="prose">
+      <p>A tiny local web page posts a JSON payload to an n8n webhook, which hands it to the API. The API validates the request, records it in Postgres, and pushes a job onto a Redis queue. Workers block on the queue, fetch the file from whichever host it lives on (Google Drive, MediaFire, and a couple of direct hosts), and stream it to a shared volume with its real filename pulled from the response headers.</p>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>Under the hood</h2>
+    <div class="prose">
+      <p><strong>Exactly-once workers.</strong> Jobs are claimed with Redis <code>BLPOP</code>, which is atomic &mdash; so you can run two or ten workers and each job still gets processed exactly once, with no locking code to maintain.</p>
+      <p><strong>One authenticated session, reused.</strong> Hosts that require login get a persistent session object shared by every downloader, so the pipeline authenticates once and stays authenticated.</p>
+      <p><strong>Files land with their real names.</strong> Hosts hide filenames behind opaque IDs, so the downloader reads <code>Content-Disposition</code> headers and falls back gracefully when a host sends nothing:</p>
+    </div>
+
+    <pre class="code"><code>def get_filename(resp, default="file.bin"):
+    cd = resp.headers.get("content-disposition", "")
+    if cd:
+        m = re.search(r"filename\*?=(?:UTF-8'')?([^;\n]+)", cd)
+        if m:
+            return m.group(1).strip().strip('"')
+    return default</code></pre>
+
+    <div class="prose">
+      <p>Downloads stream to disk in 8&nbsp;KB chunks, so multi-hundred-megabyte files never touch memory.</p>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>What broke</h2>
+    <div class="prose">
+      <p>The honest part of any build. I keep a <code>WORKAROUNDS.md</code> in the repo with every issue hit during development. A few favorites:</p>
+      <ul>
+        <li><strong>Containers died on import.</strong> A shared dependency was installed locally but never added to <code>requirements.txt</code> &mdash; the fix was boring, but it's why every service now builds clean from scratch.</li>
+        <li><strong>"Module not found" inside Docker.</strong> The working directory wasn't on the Python path; one <code>ENV PYTHONPATH=/app</code> line in each Dockerfile fixed it.</li>
+        <li><strong>A Python 3.12 upgrade broke the worker.</strong> <code>asyncio.wait_for()</code> dropped its <code>loop=</code> parameter. Updating to current patterns instead of pinning an old Python kept the stack upgradeable.</li>
+      </ul>
+      <p>None of these are exotic. That's the point &mdash; a deployment that survives the boring failures is the one you can actually trust.</p>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>What I'd do next</h2>
+    <div class="prose">
+      <p>Retry with exponential backoff per host, a small web UI to watch job status live (the data's already in Postgres), and dead-letter handling for jobs that fail three times. The queue makes all three cheap.</p>
+      <p class="cs-note">The source is kept private because of the content it was built to archive. Happy to walk through the code live.</p>
+    </div>
+  </section>
+
+  <p class="back-link"><a href="../index.html#work">&larr; Back to all work</a></p>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 Brendan Koch</p>
+    <p>Built by hand. No framework, no tracker.</p>
+  </div>
+</footer>
+
+<script src="../fit.js"></script>
+</body>
+</html>

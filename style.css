@@ -290,6 +290,118 @@ h3 {
 .contact-line a { border-bottom: 1px solid var(--line-bright); }
 .contact-line a:hover { border-bottom-color: var(--accent); }
 
+/* ---------- case study pages ---------- */
+
+.case-study .hero { padding-bottom: clamp(2.5rem, 6vh, 4rem); }
+
+.meta-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.meta-strip dt {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--soft);
+  margin-bottom: 0.3rem;
+}
+
+.meta-strip dd { margin: 0; font-size: 0.9375rem; }
+
+.cs-section {
+  padding: clamp(2.5rem, 6vh, 4rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.cs-section h2 { margin-bottom: 1.25rem; }
+
+.flow {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.75rem;
+  margin: 0 0 1.5rem;
+}
+
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.node {
+  display: inline-block;
+  background: var(--bg);
+  border: 1px solid var(--line-bright);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.node-sub { font-weight: 400; font-size: 0.75rem; color: var(--soft); }
+
+.arrow { color: var(--accent); font-weight: 600; }
+
+.flow-note { margin: 1rem 0 0; font-size: 0.875rem; color: var(--soft); }
+
+.code {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  margin: 1.25rem 0;
+}
+
+.code code {
+  font-family: "Cascadia Code", "SF Mono", Consolas, "Courier New", monospace;
+  color: #d8d5cd;
+}
+
+.prose code {
+  font-family: "Cascadia Code", "SF Mono", Consolas, "Courier New", monospace;
+  font-size: 0.85em;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+}
+
+.prose ul { margin: 0 0 1rem; padding-left: 1.25rem; color: var(--soft); }
+.prose li { margin-bottom: 0.6rem; max-width: 38rem; }
+.prose li strong, .prose p strong { color: var(--text); font-weight: 600; }
+
+.cs-note {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--soft);
+  font-size: 0.9375rem;
+}
+
+.back-link { padding: 0 0 4rem; font-size: 0.9375rem; font-weight: 600; }
+.back-link a { color: var(--accent); }
+.back-link a:hover { color: #ff8260; }
+
+@media (max-width: 700px) {
+  .meta-strip { grid-template-columns: 1fr; gap: 1rem; }
+  .flow-row { flex-direction: column; align-items: stretch; }
+  .arrow { transform: rotate(90deg); text-align: center; }
+  .node { text-align: left; }
+}
+
 /* ---------- footer ---------- */
 
 .footer { border-top: 1px solid var(--line); }
