@@ -10,11 +10,12 @@
 </head>
 <body>
 
-<div class="page">
+<div class="shell">
 
-  <header class="masthead">
-    <div class="masthead-top">
+  <aside class="rail">
+    <div class="rail-top">
       <h1>Your Name</h1>
+      <p class="role">[One line: audio hardware &amp; embedded software]</p>
       <nav class="nav">
         <a href="#work">Work</a>
         <a href="#about">About</a>
@@ -22,82 +23,92 @@
         <a href="#contact">Contact</a>
       </nav>
     </div>
-    <p class="tagline">[One line: what you do. e.g. Electrical engineering student building audio hardware and the software around it.]</p>
-  </header>
 
-  <main>
+    <div class="rail-bottom">
+      <dl class="facts">
+        <div><dt>Based</dt><dd>[City, State]</dd></div>
+        <div><dt>Tools</dt><dd>[C++, Python, soldering iron]</dd></div>
+        <div><dt>Reading</dt><dd>[a book]</dd></div>
+      </dl>
+      <p class="rail-contact">
+        <a href="mailto:you@example.com">you@example.com</a><br>
+        <a href="#">GitHub</a> &middot; <a href="#">LinkedIn</a>
+      </p>
+    </div>
+  </aside>
+
+  <main class="main">
 
     <section id="work" class="section">
       <h2>Work</h2>
-      <ul class="work">
-        <!-- ADD: copy one <li> block for each project. newest first. -->
-        <li class="item">
-          <span class="year">2026</span>
-          <div class="item-body">
-            <h3><a href="#">Project Title</a></h3>
-            <p>A sentence or two about what it is, what it does, and what was hard about it. Plain words, no buzzwords. Mention a real result if you have one.</p>
-            <p class="meta"><span class="tag">Python</span><span class="tag">hardware</span><a class="more" href="#">writeup</a></p>
-          </div>
-        </li>
+      <div class="grid">
+        <!-- ADD: copy one <article> block per project. -->
+        <article class="item">
+          <p class="year">2026</p>
+          <h3><a href="#">Project Title</a></h3>
+          <p class="blurb">A sentence or two about what it is, what it does, and what was hard about it. Plain words. Mention a real result if you have one.</p>
+          <p class="meta"><span class="tag">Python</span><span class="tag">hardware</span><a class="more" href="#">writeup</a></p>
+        </article>
 
-        <li class="item">
-          <span class="year">2025</span>
-          <div class="item-body">
-            <h3><a href="#">Another Project</a></h3>
-            <p>A sentence or two about what it is and why it exists. Delete this entry if you run out of projects &mdash; a short honest list beats filler.</p>
-            <p class="meta"><span class="tag">C++</span><span class="tag">audio</span><a class="more" href="#">code</a></p>
-          </div>
-        </li>
+        <article class="item">
+          <p class="year">2025</p>
+          <h3><a href="#">Another Project</a></h3>
+          <p class="blurb">A sentence or two about what it is and why it exists. Short honest entries beat filler.</p>
+          <p class="meta"><span class="tag">C++</span><span class="tag">audio</span><a class="more" href="#">code</a></p>
+        </article>
 
-        <li class="item">
-          <span class="year">2025</span>
-          <div class="item-body">
-            <h3><a href="#">Third Thing</a></h3>
-            <p>A sentence or two about what it is and why it exists.</p>
-            <p class="meta"><span class="tag">whatever</span><a class="more" href="#">link</a></p>
-          </div>
-        </li>
-      </ul>
-    </section>
+        <article class="item">
+          <p class="year">2025</p>
+          <h3><a href="#">Third Thing</a></h3>
+          <p class="blurb">A sentence or two about what it is and why it exists.</p>
+          <p class="meta"><span class="tag">whatever</span><a class="more" href="#">link</a></p>
+        </article>
 
-    <section id="about" class="section">
-      <h2>About</h2>
-      <div class="prose">
-        <p>I'm [Your Name], based in [City, State]. I make [your thing]. Right now I'm [what you're working on or looking for].</p>
-        <p>Before that I [one line of history]. Outside of that: [one human detail].</p>
-        <!-- ADD: two or three short paragraphs, first person. -->
+        <article class="item">
+          <p class="year">2024</p>
+          <h3><a href="#">Fourth Thing</a></h3>
+          <p class="blurb">Delete the cards you don't need. The grid reflows on its own.</p>
+          <p class="meta"><span class="tag">misc</span><a class="more" href="#">link</a></p>
+        </article>
       </div>
-      <dl class="facts">
-        <div><dt>Tools</dt><dd>[C++, Python, soldering iron]</dd></div>
-        <div><dt>Reading</dt><dd>[a book]</dd></div>
-        <div><dt>Listening</dt><dd>[an album]</dd></div>
-      </dl>
     </section>
 
-    <section id="notes" class="section">
-      <h2>Notes</h2>
-      <ul class="notes">
-        <!-- ADD: newest first. -->
-        <li><span class="date">Sep 2026</span><a href="#">Note title</a><span class="sub">one line about it</span></li>
-        <li><span class="date">Jul 2026</span><a href="#">Another note</a><span class="sub">one line about it</span></li>
-      </ul>
-    </section>
+    <div class="row">
+      <section id="about" class="section">
+        <h2>About</h2>
+        <div class="prose">
+          <p>I'm [Your Name]. I make [your thing]. Right now I'm [what you're working on or looking for].</p>
+          <p>Before that I [one line of history]. Outside of that: [one human detail].</p>
+          <!-- ADD: two or three short paragraphs, first person. -->
+        </div>
+      </section>
+
+      <section id="notes" class="section">
+        <h2>Notes</h2>
+        <ul class="notes">
+          <!-- ADD: newest first. -->
+          <li><span class="date">Sep 2026</span><a href="#">Note title</a><span class="sub">one line about it</span></li>
+          <li><span class="date">Jul 2026</span><a href="#">Another note</a><span class="sub">one line about it</span></li>
+          <li><span class="date">Mar 2026</span><a href="#">Older note</a><span class="sub">one line about it</span></li>
+        </ul>
+      </section>
+    </div>
 
     <section id="contact" class="section">
       <h2>Contact</h2>
       <div class="prose">
-        <p>Email is best: <a href="mailto:you@example.com">you@example.com</a>. Also on <a href="#">GitHub</a> and <a href="#">LinkedIn</a>.</p>
+        <p>Email is best: <a href="mailto:you@example.com">you@example.com</a>.</p>
       </div>
     </section>
 
+    <footer class="colophon">
+      <p>&copy; 2026 Your Name</p>
+      <p>Last updated September 2026</p>
+    </footer>
+
   </main>
-
-  <footer class="colophon">
-    <p>&copy; 2026 Your Name</p>
-    <p class="updated">Last updated September 2026</p>
-  </footer>
-
 </div>
 
+<script src="fit.js"></script>
 </body>
 </html>
