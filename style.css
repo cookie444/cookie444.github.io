@@ -184,6 +184,20 @@ h2 {
   background: var(--panel-hover);
 }
 
+.card.featured {
+  grid-column: 1 / -1;
+  border-color: var(--line-bright);
+}
+
+.featured-eyebrow {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .card-top {
   display: flex;
   justify-content: space-between;
