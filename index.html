@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your Name — things I made</title>
-<meta name="description" content=" portfolio, built by hand.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9998;</text></svg>">
+<title>Your Name</title>
+<meta name="description" content="Portfolio of Your Name.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' x='4' font-size='24' font-family='Georgia'>n</text></svg>">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,123 +13,88 @@
 <div class="page">
 
   <header class="masthead">
-    <p class="kicker">portfolio &mdash; vol. 1</p>
-    <h1><span class="mark">Your Name</span></h1>
-    <p class="tagline">I build <span class="underline">hardware</span>, <span class="underline">software</span>, and other <span class="strike">bad ideas</span> good ideas.</p>
-
-    <nav class="nav">
-      <a href="#about">about</a>
-      <a href="#work">work</a>
-      <a href="#notes">notes</a>
-      <a href="#contact">contact</a>
-    </nav>
+    <div class="masthead-top">
+      <h1>Your Name</h1>
+      <nav class="nav">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#notes">Notes</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <p class="tagline">[One line: what you do. e.g. Electrical engineering student building audio hardware and the software around it.]</p>
   </header>
 
-  <svg class="squiggle" viewBox="0 0 600 12" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M2 7 C 60 2, 90 11, 150 6 S 240 1, 300 7 S 400 12, 460 5 S 545 2, 598 8" />
-  </svg>
+  <main>
 
-  <section id="about" class="section">
-    <h2>About</h2>
-    <div class="prose">
-      <p>Hi. I'm [Your Name] &mdash; I'm based in [City, State] and I make things. Mostly [your thing: embedded audio hardware, scrapers, weird web apps]. This page is hand-written HTML, no framework, no template.</p>
-      <p>Right now I'm [what you're working on / looking for]. Before that I [one line of history].</p>
-      <!-- ADD: swap in your own two or three paragraphs. keep it in first person. -->
-    </div>
+    <section id="work" class="section">
+      <h2>Work</h2>
+      <ul class="work">
+        <!-- ADD: copy one <li> block for each project. newest first. -->
+        <li class="item">
+          <span class="year">2026</span>
+          <div class="item-body">
+            <h3><a href="#">Project Title</a></h3>
+            <p>A sentence or two about what it is, what it does, and what was hard about it. Plain words, no buzzwords. Mention a real result if you have one.</p>
+            <p class="meta"><span class="tag">Python</span><span class="tag">hardware</span><a class="more" href="#">writeup</a></p>
+          </div>
+        </li>
 
-    <ul class="facts">
-      <li><span class="label">Currently</span> [building / studying / job hunting]</li>
-      <li><span class="label">Tools</span> [C++, Python, soldering iron]</li>
-      <li><span class="label">Reading</span> [a book]</li>
-      <li><span class="label">Listening</span> [an album]</li>
-    </ul>
-  </section>
+        <li class="item">
+          <span class="year">2025</span>
+          <div class="item-body">
+            <h3><a href="#">Another Project</a></h3>
+            <p>A sentence or two about what it is and why it exists. Delete this entry if you run out of projects &mdash; a short honest list beats filler.</p>
+            <p class="meta"><span class="tag">C++</span><span class="tag">audio</span><a class="more" href="#">code</a></p>
+          </div>
+        </li>
 
-  <section id="work" class="section">
-    <h2>Work</h2>
-    <p class="section-note">Things I finished. Roughly newest first.</p>
+        <li class="item">
+          <span class="year">2025</span>
+          <div class="item-body">
+            <h3><a href="#">Third Thing</a></h3>
+            <p>A sentence or two about what it is and why it exists.</p>
+            <p class="meta"><span class="tag">whatever</span><a class="more" href="#">link</a></p>
+          </div>
+        </li>
+      </ul>
+    </section>
 
-    <div class="cards">
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="prose">
+        <p>I'm [Your Name], based in [City, State]. I make [your thing]. Right now I'm [what you're working on or looking for].</p>
+        <p>Before that I [one line of history]. Outside of that: [one human detail].</p>
+        <!-- ADD: two or three short paragraphs, first person. -->
+      </div>
+      <dl class="facts">
+        <div><dt>Tools</dt><dd>[C++, Python, soldering iron]</dd></div>
+        <div><dt>Reading</dt><dd>[a book]</dd></div>
+        <div><dt>Listening</dt><dd>[an album]</dd></div>
+      </dl>
+    </section>
 
-      <!-- ADD: copy one card block below, fill it in, delete these notes. -->
-      <article class="card">
-        <div class="tape" aria-hidden="true"></div>
-        <p class="card-num">01</p>
-        <h3>Project Title</h3>
-        <p class="card-blurb">A couple of sentences about what it is, what problem it solved, and why it was interesting. Plain talk beats buzzwords.</p>
-        <p class="card-meta">
-          <span class="tag">Python</span>
-          <span class="tag">hardware</span>
-        </p>
-        <p class="card-links">
-          <a href="#">live</a> <span class="dot">&middot;</span> <a href="#">code</a> <span class="dot">&middot;</span> <a href="#">writeup</a>
-        </p>
-      </article>
+    <section id="notes" class="section">
+      <h2>Notes</h2>
+      <ul class="notes">
+        <!-- ADD: newest first. -->
+        <li><span class="date">Sep 2026</span><a href="#">Note title</a><span class="sub">one line about it</span></li>
+        <li><span class="date">Jul 2026</span><a href="#">Another note</a><span class="sub">one line about it</span></li>
+      </ul>
+    </section>
 
-      <article class="card alt">
-        <div class="tape" aria-hidden="true"></div>
-        <p class="card-num">02</p>
-        <h3>Another Project</h3>
-        <p class="card-blurb">Short description goes here. Mention the result if you have one &mdash; numbers, users, latency, whatever you actually measured.</p>
-        <p class="card-meta">
-          <span class="tag">C++</span>
-          <span class="tag">audio</span>
-        </p>
-        <p class="card-links">
-          <a href="#">code</a> <span class="dot">&middot;</span> <a href="#">writeup</a>
-        </p>
-      </article>
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="prose">
+        <p>Email is best: <a href="mailto:you@example.com">you@example.com</a>. Also on <a href="#">GitHub</a> and <a href="#">LinkedIn</a>.</p>
+      </div>
+    </section>
 
-      <article class="card">
-        <div class="tape" aria-hidden="true"></div>
-        <p class="card-num">03</p>
-        <h3>Third Thing</h3>
-        <p class="card-blurb">Short description goes here. Delete this card if you only have two projects &mdash; an empty slot looks worse than a short list.</p>
-        <p class="card-meta">
-          <span class="tag">whatever</span>
-        </p>
-        <p class="card-links">
-          <a href="#">link</a>
-        </p>
-      </article>
-
-    </div>
-  </section>
-
-  <section id="notes" class="section">
-    <h2>Notes</h2>
-    <p class="section-note">Occasional scribbles. No schedule.</p>
-
-    <ul class="notes">
-      <!-- ADD: newest entry goes on top. -->
-      <li>
-        <span class="date">2026 &mdash; 09</span>
-        <a href="#">Note title</a>
-        <span class="note-sub">one line about what it is</span>
-      </li>
-      <li>
-        <span class="date">2026 &mdash; 07</span>
-        <a href="#">Another note</a>
-        <span class="note-sub">one line about what it is</span>
-      </li>
-    </ul>
-  </section>
-
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <div class="prose">
-      <p>Email is best: <a href="mailto:you@example.com">you@example.com</a>. I also exist at
-        <a href="#">github</a>, <a href="#">linkedin</a>, and <a href="#">wherever else</a>.</p>
-    </div>
-  </section>
+  </main>
 
   <footer class="colophon">
-    <svg class="squiggle" viewBox="0 0 600 12" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M2 7 C 60 2, 90 11, 150 6 S 240 1, 300 7 S 400 12, 460 5 S 545 2, 598 8" />
-    </svg>
-    <p>Set in Courier New &amp; Georgia. No trackers, no cookies, no build step.</p>
-    <p class="stamp">Handmade</p>
-    <p class="updated">last updated <time datetime="2026-09-04">September 2026</time></p>
+    <p>&copy; 2026 Your Name</p>
+    <p class="updated">Last updated September 2026</p>
   </footer>
 
 </div>
