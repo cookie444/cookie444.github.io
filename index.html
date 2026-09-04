@@ -3,111 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your Name</title>
-<meta name="description" content="Portfolio of Your Name.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' x='4' font-size='24' font-family='Georgia'>n</text></svg>">
+<title>Brendan Koch</title>
+<meta name="description" content="Portfolio of Brendan Koch — QA and automation engineer, pedal builder, toolmaker.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23ff6a3d'/><text x='16' y='23' font-size='18' font-family='Arial' font-weight='700' text-anchor='middle' fill='%230b0b0d'>B</text></svg>">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="shell">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">Brendan Koch</a>
+    <nav class="nav">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#notes">Notes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <aside class="rail">
-    <div class="rail-top">
-      <h1>Your Name</h1>
-      <p class="role">[One line: audio hardware &amp; embedded software]</p>
-      <nav class="nav">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#notes">Notes</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<main id="top">
+
+  <section class="hero">
+    <p class="eyebrow">QA &amp; automation engineer</p>
+    <h1>Software that holds up.<br>Hardware that makes noise.</h1>
+    <p class="sub">By day I rebuild test and release pipelines at Ansys. Off hours I solder guitar pedals, write scrapers, and ship small tools that fix my own annoyances.</p>
+    <div class="cta">
+      <a class="btn solid" href="#work">See the work</a>
+      <a class="btn ghost" href="mailto:brendan.koch8@gmail.com">Get in touch</a>
     </div>
+  </section>
 
-    <div class="rail-bottom">
-      <dl class="facts">
-        <div><dt>Based</dt><dd>[City, State]</dd></div>
-        <div><dt>Tools</dt><dd>[C++, Python, soldering iron]</dd></div>
-        <div><dt>Reading</dt><dd>[a book]</dd></div>
-      </dl>
-      <p class="rail-contact">
-        <a href="mailto:you@example.com">you@example.com</a><br>
-        <a href="#">GitHub</a> &middot; <a href="#">LinkedIn</a>
-      </p>
-    </div>
-  </aside>
-
-  <main class="main">
-
-    <section id="work" class="section">
+  <section id="work" class="section">
+    <div class="section-head">
       <h2>Work</h2>
-      <div class="grid">
-        <!-- ADD: copy one <article> block per project. -->
-        <article class="item">
-          <p class="year">2026</p>
-          <h3><a href="#">Project Title</a></h3>
-          <p class="blurb">A sentence or two about what it is, what it does, and what was hard about it. Plain words. Mention a real result if you have one.</p>
-          <p class="meta"><span class="tag">Python</span><span class="tag">hardware</span><a class="more" href="#">writeup</a></p>
-        </article>
-
-        <article class="item">
-          <p class="year">2025</p>
-          <h3><a href="#">Another Project</a></h3>
-          <p class="blurb">A sentence or two about what it is and why it exists. Short honest entries beat filler.</p>
-          <p class="meta"><span class="tag">C++</span><span class="tag">audio</span><a class="more" href="#">code</a></p>
-        </article>
-
-        <article class="item">
-          <p class="year">2025</p>
-          <h3><a href="#">Third Thing</a></h3>
-          <p class="blurb">A sentence or two about what it is and why it exists.</p>
-          <p class="meta"><span class="tag">whatever</span><a class="more" href="#">link</a></p>
-        </article>
-
-        <article class="item">
-          <p class="year">2024</p>
-          <h3><a href="#">Fourth Thing</a></h3>
-          <p class="blurb">Delete the cards you don't need. The grid reflows on its own.</p>
-          <p class="meta"><span class="tag">misc</span><a class="more" href="#">link</a></p>
-        </article>
-      </div>
-    </section>
-
-    <div class="row">
-      <section id="about" class="section">
-        <h2>About</h2>
-        <div class="prose">
-          <p>I'm [Your Name]. I make [your thing]. Right now I'm [what you're working on or looking for].</p>
-          <p>Before that I [one line of history]. Outside of that: [one human detail].</p>
-          <!-- ADD: two or three short paragraphs, first person. -->
-        </div>
-      </section>
-
-      <section id="notes" class="section">
-        <h2>Notes</h2>
-        <ul class="notes">
-          <!-- ADD: newest first. -->
-          <li><span class="date">Sep 2026</span><a href="#">Note title</a><span class="sub">one line about it</span></li>
-          <li><span class="date">Jul 2026</span><a href="#">Another note</a><span class="sub">one line about it</span></li>
-          <li><span class="date">Mar 2026</span><a href="#">Older note</a><span class="sub">one line about it</span></li>
-        </ul>
-      </section>
+      <p class="section-sub">Things I built and finished. Newest first.</p>
     </div>
 
-    <section id="contact" class="section">
-      <h2>Contact</h2>
+    <div class="grid">
+
+      <article class="card">
+        <div class="card-top">
+          <p class="year">2026</p>
+          <p class="kind">Hardware</p>
+        </div>
+        <h3>One-Knob Distortion Pedal</h3>
+        <p class="blurb">A distortion pedal built around the Electrosmith Daisy Seed. Breadboard to perfboard, documented end to end: wiring diagrams, a step-by-step build guide, and a full report.</p>
+        <p class="meta"><span class="tag">Daisy Seed</span><span class="tag">DSP</span><span class="tag">hardware</span></p>
+        <p class="links"><a href="#">Report</a><a href="#">Build guide</a></p>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <p class="year">2026</p>
+          <p class="kind">Hardware</p>
+        </div>
+        <h3>Daisy Reverb Pedal</h3>
+        <p class="blurb">Second build on the Daisy platform: a reverb pedal with a full LaTeX writeup covering the circuit, the enclosure, and what the first build taught me.</p>
+        <p class="meta"><span class="tag">Daisy Seed</span><span class="tag">audio</span></p>
+        <p class="links"><a href="#">Report</a></p>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <p class="year">2026</p>
+          <p class="kind">Software</p>
+        </div>
+        <h3>PSARC Pipeline</h3>
+        <p class="blurb">Automated downloader for Rocksmith customs (CDLC). An n8n webhook drives Docker services that fetch, unpack, and organize files &mdash; kicked off from a one-field local GUI.</p>
+        <p class="meta"><span class="tag">n8n</span><span class="tag">Docker</span><span class="tag">Python</span></p>
+        <p class="links"><a href="https://github.com/cookie444/psarc-pipeline">GitHub</a></p>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <p class="year">2025</p>
+          <p class="kind">Software</p>
+        </div>
+        <h3>PS5 Price Tracker</h3>
+        <p class="blurb">Scrapes PriceCharting for PS5 game prices into SQLite, then charts market averages and the biggest movers over time with matplotlib.</p>
+        <p class="meta"><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">matplotlib</span></p>
+        <p class="links"><a href="#">Code</a></p>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <p class="year">2025</p>
+          <p class="kind">Tool</p>
+        </div>
+        <h3>Discord Mic Fix</h3>
+        <p class="blurb">A small Windows GUI that fixes Discord's stuck microphone: it enumerates audio devices and flips the right switches so you stop being muted on calls.</p>
+        <p class="meta"><span class="tag">Python</span><span class="tag">Windows</span><span class="tag">audio</span></p>
+        <p class="links"><a href="#">Code</a></p>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <p class="year">2025</p>
+          <p class="kind">Hardware</p>
+        </div>
+        <h3>Chase Bliss Pedal Grip</h3>
+        <p class="blurb">A parametric OpenSCAD model of a grip that fits Chase Bliss pedals, generated to STL from Python and 3D printed.</p>
+        <p class="meta"><span class="tag">OpenSCAD</span><span class="tag">3D printing</span></p>
+        <p class="links"><a href="#">Model</a></p>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="section-head">
+      <h2>About</h2>
+    </div>
+    <div class="about-cols">
       <div class="prose">
-        <p>Email is best: <a href="mailto:you@example.com">you@example.com</a>.</p>
+        <p>I'm Brendan. I work at Ansys, where I rebuilt the localization automation pipeline on Azure DevOps &mdash; migrating scattered scripts into modern CI/CD &mdash; and I keep Linux and Windows test environments running from bare metal up.</p>
+        <p>On my own time I solder audio circuits and write small tools. Right now I'm designing a residual-value engine that prices used PC hardware from real market listings.</p>
       </div>
-    </section>
+      <dl class="facts">
+        <div><dt>Email</dt><dd><a href="mailto:brendan.koch8@gmail.com">brendan.koch8@gmail.com</a></dd></div>
+        <div><dt>GitHub</dt><dd><a href="https://github.com/cookie444">@cookie444</a></dd></div>
+        <div><dt>Based</dt><dd>[Pittsburgh, PA]</dd></div>
+        <div><dt>Focus</dt><dd>Automation, audio DSP, tooling</dd></div>
+      </dl>
+    </div>
+  </section>
 
-    <footer class="colophon">
-      <p>&copy; 2026 Your Name</p>
-      <p>Last updated September 2026</p>
-    </footer>
+  <section id="notes" class="section">
+    <div class="section-head">
+      <h2>Notes</h2>
+      <p class="section-sub">Occasional writeups and build logs.</p>
+    </div>
+    <ul class="notes">
+      <!-- ADD: newest first. -->
+      <li><span class="date">Sep 2026</span><a href="#">Note title</a><span class="sub">one line about it</span></li>
+      <li><span class="date">Jul 2026</span><a href="#">Another note</a><span class="sub">one line about it</span></li>
+      <li><span class="date">Mar 2026</span><a href="#">Older note</a><span class="sub">one line about it</span></li>
+    </ul>
+  </section>
 
-  </main>
-</div>
+  <section id="contact" class="section">
+    <div class="section-head">
+      <h2>Contact</h2>
+    </div>
+    <p class="contact-line">Email is best: <a href="mailto:brendan.koch8@gmail.com">brendan.koch8@gmail.com</a></p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 Brendan Koch</p>
+    <p>Built by hand. No framework, no tracker.</p>
+  </div>
+</footer>
 
 <script src="fit.js"></script>
 </body>
