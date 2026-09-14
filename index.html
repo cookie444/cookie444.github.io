@@ -28,7 +28,7 @@
   <section class="hero">
     <p class="eyebrow">Product verification engineer</p>
     <h1>Software that holds up.<br>Hardware that makes noise.</h1>
-    <p class="sub">Previously QA and automation at Ansys, where I rebuilt test and release pipelines from the ground up. Off hours I solder guitar pedals, write scrapers, and ship small tools that fix my own annoyances.</p>
+    <p class="sub">QA and automation engineer with a background at Ansys, where I rebuilt test and release pipelines from the ground up. I build test infrastructure, CI/CD, and tooling that turn manual work into repeatable, measurable process &mdash; and I apply the same rigor to the audio hardware I design and verify on my own time.</p>
     <div class="cta">
       <a class="btn solid" href="#work">See the work</a>
       <a class="btn ghost" href="mailto:brendan.koch8@gmail.com">Get in touch</a>
@@ -49,7 +49,7 @@
           <p class="kind">Software</p>
         </div>
         <h3>Daisy Pedal HIL Test Rig</h3>
-        <p class="blurb">A hardware-in-the-loop audio test harness for Electrosmith Daisy pedals. It plays a known signal into the pedal, captures what comes back, and asserts measurable specs &mdash; delay time vs tap tempo, repeat decay, THD/THD+N, frequency response, stutter slice timing, noise floor &mdash; with every threshold in one YAML config. The same suite runs against a reference DSP plant in CI and a real Pod on hardware, emits JUnit XML plus an HTML report with waveforms, and injects faults to prove the harness catches regressions.</p>
+        <p class="blurb">A hardware-in-the-loop test harness that verifies audio hardware against measurable spec thresholds instead of manual listening. It generates known signal stimuli, captures the response, and asserts pass/fail on metrics like latency, THD, frequency response, and repeat decay &mdash; every tolerance centralized in one config file. The same suite runs against a simulated reference model in CI on every push and against real hardware on a self-hosted runner, emitting JUnit XML and waveform reports for the checks panel and offline triage. Fault injection proves the harness catches regressions, not just green builds.</p>
         <p class="meta"><span class="tag">Python</span><span class="tag">hardware-in-the-loop</span><span class="tag">pytest</span><span class="tag">GitHub Actions</span></p>
         <p class="links"><a href="https://github.com/cookie444/daisy-pedal-test-harness">GitHub</a><a href="https://github.com/cookie444/daisy-pedal-test-harness/blob/main/README.md">Specs &amp; fault injection</a></p>
       </article>
