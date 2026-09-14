@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PSARC Pipeline — Brendan Koch</title>
-<meta name="description" content="Case study: a queue-driven download and packaging pipeline built with FastAPI, Redis, Postgres, and Docker.">
+<meta name="description" content="Case study: a queue-driven download manager for CustomsForge Rocksmith CDLC built with FastAPI, Redis, Postgres, and Docker.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23ff6a3d'/><text x='16' y='23' font-size='18' font-family='Arial' font-weight='700' text-anchor='middle' fill='%230b0b0d'>B</text></svg>">
 <link rel="stylesheet" href="../style.css">
 </head>
@@ -27,9 +27,9 @@
   <section class="hero">
     <p class="eyebrow">Case study &mdash; 2026</p>
     <h1>PSARC Pipeline</h1>
-    <p class="sub">A queue-driven pipeline that downloads, unpacks, and organizes a personal library of fan-made game add-on files from several different file hosts &mdash; triggered from a one-field form, fully containerized.</p>
+    <p class="sub">A queue-driven download manager for CustomsForge Rocksmith CDLC. Point it at an artist or a batch of songs and it authenticates to CustomsForge, resolves each file&rsquo;s real host link, and streams it to disk &mdash; fully containerized.</p>
     <dl class="meta-strip">
-      <div><dt>Stack</dt><dd>FastAPI, Redis, Postgres, Docker, n8n</dd></div>
+      <div><dt>Stack</dt><dd>FastAPI, Redis, Postgres, SQLAlchemy, Docker</dd></div>
       <div><dt>Role</dt><dd>Solo build, design to deployment</dd></div>
       <div><dt>Source</dt><dd>Private &mdash; walkthrough on request</dd></div>
     </dl>
@@ -45,11 +45,9 @@
 
   <section class="cs-section">
     <h2>How it works</h2>
-    <div class="flow" role="img" aria-label="Architecture: webhook form to API, API writes to Postgres and pushes a job to Redis, workers pop jobs and write files to a shared volume, nginx fronts the API.">
+    <div class="flow" role="img" aria-label="Architecture: API request, API writes to Postgres and pushes a job to Redis, workers pop jobs and write files to a shared volume, nginx fronts the API.">
       <div class="flow-row">
-        <span class="node">One-field form<br><span class="node-sub">n8n webhook</span></span>
-        <span class="arrow">&rarr;</span>
-        <span class="node">API<br><span class="node-sub">FastAPI + nginx</span></span>
+        <span class="node">Search / enqueue<br><span class="node-sub">FastAPI + nginx</span></span>
         <span class="arrow">&rarr;</span>
         <span class="node">Redis<br><span class="node-sub">job queue</span></span>
         <span class="arrow">&rarr;</span>
@@ -60,7 +58,7 @@
       <p class="flow-note">Postgres tracks every job's status end to end.</p>
     </div>
     <div class="prose">
-      <p>A tiny local web page posts a JSON payload to an n8n webhook, which hands it to the API. The API validates the request, records it in Postgres, and pushes a job onto a Redis queue. Workers block on the queue, fetch the file from whichever host it lives on (Google Drive, MediaFire, and a couple of direct hosts), and stream it to a shared volume with its real filename pulled from the response headers.</p>
+      <p>The API exposes <code>/api/jobs/search</code> and <code>/api/jobs/enqueue</code>. A search request hits CustomsForge and stores every song it finds for an artist in Postgres; an enqueue request creates one download job per song and pushes it onto a Redis queue. Workers block on the queue, authenticate to CustomsForge, resolve each song&rsquo;s toggle URL into its real external download link, and stream the file from that host (Google Drive, Dropbox, or MediaFire) to a shared volume, with the filename pulled from the response headers.</p>
     </div>
   </section>
 

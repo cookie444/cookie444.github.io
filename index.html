@@ -71,8 +71,8 @@
           <p class="kind">Software</p>
         </div>
         <h3>PSARC Pipeline</h3>
-        <p class="blurb">Queue-driven pipeline that downloads, unpacks, and organizes a library of files from multiple hosts. n8n webhook in, FastAPI + Redis workers in Docker do the rest.</p>
-        <p class="meta"><span class="tag">n8n</span><span class="tag">Docker</span><span class="tag">Python</span></p>
+        <p class="blurb">Queue-driven download manager for CustomsForge Rocksmith CDLC. A FastAPI service turns search and enqueue requests into Postgres-backed jobs; async workers claim them off a Redis queue, authenticate to CustomsForge, resolve each song&rsquo;s real host link, and stream the file to disk. Rate limiting, retries, and host-specific downloaders for Google Drive, Dropbox, and MediaFire handled explicitly.</p>
+        <p class="meta"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Redis</span><span class="tag">Docker</span></p>
         <p class="links"><a href="work/psarc-pipeline.html">Case study</a></p>
       </article>
 
