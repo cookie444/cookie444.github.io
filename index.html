@@ -46,12 +46,12 @@
       <article class="card">
         <div class="card-top">
           <p class="year">2026</p>
-          <p class="kind">Hardware</p>
+          <p class="kind">Software</p>
         </div>
-        <h3>Buffer Scramble</h3>
-        <p class="blurb">A slice re-sequencer for the Electrosmith Daisy Pod. Everything you play is captured into a window of eight beat-synced slices, and while one window records the previous one plays back &mdash; with its slices shuffled. At SCRAMBLE 0 you hear the phrase exactly as you played it, one window late; turn it up and it gets cut up and rearranged. Four modes: forward, reversed, ping-pong, or a slow drift that rotates the order every pass. Hold the trigger to freeze the window into a loop.</p>
-        <p class="meta"><span class="tag">Daisy Pod</span><span class="tag">DSP</span><span class="tag">C++</span><span class="tag">firmware</span></p>
-        <p class="links"><a href="https://github.com/cookie444/Daisy-Pod-Projects/tree/main/buffer-scramble">GitHub</a><a href="https://github.com/cookie444/Daisy-Pod-Projects/blob/main/buffer-scramble/README.md">Controls &amp; internals</a></p>
+        <h3>Daisy Pedal HIL Test Rig</h3>
+        <p class="blurb">A hardware-in-the-loop audio test harness for Electrosmith Daisy pedals. It plays a known signal into the pedal, captures what comes back, and asserts measurable specs &mdash; delay time vs tap tempo, repeat decay, THD/THD+N, frequency response, stutter slice timing, noise floor &mdash; with every threshold in one YAML config. The same suite runs against a reference DSP plant in CI and a real Pod on hardware, emits JUnit XML plus an HTML report with waveforms, and injects faults to prove the harness catches regressions.</p>
+        <p class="meta"><span class="tag">Python</span><span class="tag">hardware-in-the-loop</span><span class="tag">pytest</span><span class="tag">GitHub Actions</span></p>
+        <p class="links"><a href="https://github.com/cookie444/daisy-pedal-test-harness">GitHub</a><a href="https://github.com/cookie444/daisy-pedal-test-harness/blob/main/README.md">Specs &amp; fault injection</a></p>
       </article>
 
       <article class="card">
@@ -59,21 +59,10 @@
           <p class="year">2026</p>
           <p class="kind">Hardware</p>
         </div>
-        <h3>Stochastic Stutter</h3>
-        <p class="blurb">A glitch pedal for the Electrosmith Daisy Pod that chops on the grid instead of at random. It records continuously into a ~1 s buffer and retriggers slices against a 16-step Euclidean pattern &mdash; push CHAOS and the groove thickens without the downbeat ever moving. The encoder picks the flavour: gate the signal, stutter the last slice, walk the repeats up in whole tones, or run them backwards. Tap tempo, hold-to-stutter, encoder bypass.</p>
+        <h3>Daisy Pod Pedals</h3>
+        <p class="blurb">A series of effects for the Electrosmith Daisy Pod &mdash; one firmware project per effect in a shared mono repo built on libDaisy and DaisySP. An analog-style delay with tape wobble, a Euclidean stutter/glitch, a slice re-sequencer, a resonant bank your playing excites, and a dual-engine drive with cabinet sim. All five share one lib/ and one Makefile workflow.</p>
         <p class="meta"><span class="tag">Daisy Pod</span><span class="tag">DSP</span><span class="tag">C++</span><span class="tag">firmware</span></p>
-        <p class="links"><a href="https://github.com/cookie444/Daisy-Pod-Projects/tree/main/stutter-glitch">GitHub</a><a href="https://github.com/cookie444/Daisy-Pod-Projects/blob/main/stutter-glitch/README.md">Controls &amp; internals</a></p>
-      </article>
-
-      <article class="card">
-        <div class="card-top">
-          <p class="year">2026</p>
-          <p class="kind">Hardware</p>
-        </div>
-        <h3>Daisy Pod Delay</h3>
-        <p class="blurb">Analog-style delay for the Electrosmith Daisy Pod &mdash; repeats darken as they decay because the lowpass sits in the feedback path, the way a real BBD does. Feedback and mix on the knobs, tap tempo averaged over the last four taps, &plusmn;5 ms per detent encoder fine-tune on the same value, and encoder-press tape wobble. Built on libDaisy and DaisySP.</p>
-        <p class="meta"><span class="tag">Daisy Pod</span><span class="tag">DSP</span><span class="tag">C++</span><span class="tag">firmware</span></p>
-        <p class="links"><a href="https://github.com/cookie444/Daisy-Pod-Projects/tree/main/delay">GitHub</a><a href="https://github.com/cookie444/Daisy-Pod-Projects/blob/main/delay/README.md">Controls &amp; internals</a></p>
+        <p class="links"><a href="https://github.com/cookie444/Daisy-Pod-Projects">Repo</a><a href="https://github.com/cookie444/Daisy-Pod-Projects/tree/main/delay">Delay</a><a href="https://github.com/cookie444/Daisy-Pod-Projects/tree/main/stutter-glitch">Stutter</a><a href="https://github.com/cookie444/Daisy-Pod-Projects/tree/main/buffer-scramble">Scramble</a><a href="https://github.com/cookie444/Daisy-Pod-Projects/tree/main/specter-resonator">Resonator</a><a href="https://github.com/cookie444/Daisy-Pod-Projects/tree/main/legacy-harmonic-saturator">Drive</a></p>
       </article>
 
       <article class="card">
